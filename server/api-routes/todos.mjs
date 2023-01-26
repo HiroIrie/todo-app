@@ -1,5 +1,6 @@
 import express from 'express';
 const router=express.Router();
+import Todo from '../models/todo.mjs';
 
 //todo一覧を返す処理
 router.get('/',(req,res)=>{
@@ -8,7 +9,7 @@ router.get('/',(req,res)=>{
 
 //todoを追加する処理
 router.post('/',(req,res)=>{
-    res.send('todoを追加します')
+    res.send(req.body)
 });
 
 //todo削除
