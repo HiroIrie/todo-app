@@ -4,3 +4,4 @@
 .env.production.local
 .env
 request.http
+node_modules
