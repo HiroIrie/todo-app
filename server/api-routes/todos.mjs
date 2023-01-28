@@ -1,20 +1,19 @@
 import express from 'express';
-const router=express.Router();
-import Todo from '../models/todo.mjs';
+import{getAllTodos,registTodo,deleteTodo}from '../controllers/todos.mjs';
+import {body} from 'express-validator';
+import { requestErrorHandler } from '../helpers/helper.mjs';
+const router = express.Router();
+
 
 //todo一覧を返す処理
-router.get('/',(req,res)=>{
-    res.send('ゲットメッソドですよ')
-});
+router.get('/',getAllTodos);
 
 //todoを追加する処理
-router.post('/',(req,res)=>{
-    res.send(req.body)
-});
+router.post('/',
+body('todo').notEmpty()
+, requestErrorHandler(registTodo) );
 
 //todo削除
-router.delete('/:id',(req,res)=>{
-    res.send(`${params.id}を削除します`)
-});
+router.delete('/:id',requestErrorHandler(deleteTodo)  );
 
 export default router;

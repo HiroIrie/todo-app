@@ -1,0 +1,31 @@
+import Todo from '../models/todo.mjs';
+import { validationResult } from 'express-validator';
+
+//todo一覧を取得する関数
+async function getAllTodos (req, res) {
+    const todos = await Todo.find().sort({ "DATE": -1 });
+    res.json(todos);  
+}
+
+//todoを追加する関数
+async function registTodo (req, res) {
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+       const errs=errors.array();
+      return res.status(400).json(errs);
+    }
+        const book = new Todo(req.body);
+        const newBook = await book.save();
+        res.status(201).json(newBook);   
+}
+    
+
+//todoを削除する関数
+async function deleteTodo (req, res) {
+    const _id = req.params.id;
+    const { deletedCount } = await Todo.deleteOne({ _id });
+   if(deletedCount===0){return res.status(404).json({"msg":"Target Not Found"})}
+   res.json({"msg":"Delete succeced"});
+}
+
+export{getAllTodos,registTodo,deleteTodo};
