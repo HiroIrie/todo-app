@@ -28,4 +28,15 @@ async function deleteTodo (req, res) {
    res.json({"msg":"Delete succeced"});
 }
 
-export{getAllTodos,registTodo,deleteTodo};
+//todoを更新する関数
+async function updateTodo(req,res){
+   const {completed}=req.body;
+   const _id=req.params.id;
+   const todo=await Todo.findById(_id);
+   if(todo===null)res.status(404).json({"msg":"Page Not Found"});
+   if(todo.completed==completed)return;
+   todo.completed=completed;
+   await todo.save();
+}
+
+export{getAllTodos,registTodo,deleteTodo,updateTodo};

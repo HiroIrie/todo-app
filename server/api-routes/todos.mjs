@@ -1,5 +1,5 @@
 import express from 'express';
-import{getAllTodos,registTodo,deleteTodo}from '../controllers/todos.mjs';
+import{getAllTodos,registTodo,deleteTodo,updateTodo}from '../controllers/todos.mjs';
 import {body} from 'express-validator';
 import { requestErrorHandler } from '../helpers/helper.mjs';
 const router = express.Router();
@@ -16,4 +16,8 @@ body('todo').notEmpty()
 //todo削除
 router.delete('/:id',requestErrorHandler(deleteTodo)  );
 
+//completedを変更する処理
+router.patch('/:id',requestErrorHandler(updateTodo));
+
 export default router;
+

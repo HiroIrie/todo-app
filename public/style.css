@@ -1,0 +1,30 @@
+#checkbox{
+    transform: scale(2);
+    margin-right: 10px;
+}
+
+.delete{
+    margin-left: 20px;
+    background-color: rgb(245, 80, 80);
+    color:blue;
+}
+.delete:hover{
+    background-color: rgb(216, 156, 156);
+}
+
+li{
+    display:flex;
+    justify-content:flex-start;
+    margin-bottom:2em;
+    
+}
+ul{
+    list-style: none;
+    padding-left: 10px;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
