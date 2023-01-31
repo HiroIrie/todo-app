@@ -2,10 +2,10 @@
   "name": "todo-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:api": "nodemon server/app.mjs"
+    "start": "node server/app.mjs"
   },
   "repository": {
     "type": "git",
