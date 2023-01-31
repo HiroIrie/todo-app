@@ -3,7 +3,7 @@ import apiRouter from './api-routes/index.mjs';
 import './helpers/db.mjs';
 import path from 'path';
 const app=express();
-const PORT=3000;
+const port=process.env.PORT||3000;
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -21,8 +21,8 @@ app.use(function(err,req,res,next){
     res.status(500).json({"msg":"不正なエラーが発生しました"});
 })
 
-app.listen(PORT,(req,res)=>{
-    console.log(`${PORT}でサーバーが起動しましたよ！！`);
+app.listen(port,(req,res)=>{
+    console.log(`${port}でサーバーが起動しましたよ！！`);
 });
 
 
