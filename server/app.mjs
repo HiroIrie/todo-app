@@ -2,6 +2,9 @@ import express from 'express';
 import apiRouter from './api-routes/index.mjs';
 import './helpers/db.mjs';
 import path from 'path';
+import env from 'dotenv';
+
+env.config();
 const app=express();
 const port=process.env.PORT||3000;
 

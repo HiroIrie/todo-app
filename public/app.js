@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async function () {
                 try{
                     axios.request({
                         method: 'patch',
-                        url: `http://localhost:3000/api/todos/${target.id}`,
+                        url: `api/todos/${target.id}`,
                         data: {
                             completed: target.value
                         }
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', async function () {
                 try {
                         axios.request({
                         method: "post",
-                        url: "http://localhost:3000/api/todos",
+                        url: "api/todos",
                         data: {
                             todo: text
                         }
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             let target=e.target;
             if(target.className==="delete"){
                 try{
-                    axios.delete(`http://localhost:3000/api/todos/${target.id}`);
+                    axios.delete(`api/todos/${target.id}`);
                     this.window.location.reload();
                 }catch(err){
                   this.alert('削除失敗')
